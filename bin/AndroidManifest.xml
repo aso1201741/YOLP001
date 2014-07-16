@@ -26,6 +26,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="jp.ac.st.asojuku.yolp001.RSearch"
+            android:label="@string/app_name" ></activity>
     </application>
 
 </manifest>

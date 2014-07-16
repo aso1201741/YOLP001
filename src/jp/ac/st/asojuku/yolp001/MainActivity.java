@@ -5,12 +5,14 @@ import jp.co.yahoo.android.maps.MapController;
 import jp.co.yahoo.android.maps.MapView;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 
 public class MainActivity extends Activity implements LocationListener{
 
@@ -85,6 +87,18 @@ public class MainActivity extends Activity implements LocationListener{
 		String provider = mLocationManager.getBestProvider(criteria, true);
 		mLocationManager.requestLocationUpdates(provider, 0, 0, this);
 
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// TODO 自動生成されたメソッド・スタブ
+		switch(item.getItemId()){
+		case R.id.action_search:
+			Intent vIntent = new Intent(this, RSearch.class);
+			startActivity(vIntent);
+			return true;
+		}
+		return false;
 	}
 
 	@Override
