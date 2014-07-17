@@ -24,20 +24,17 @@ public class RSearch extends MapActivity implements RouteOverlayListener, Locati
 	@Override
 	public boolean onLongPress(MapView arg0, Object arg1, PinOverlay arg2, GeoPoint arg3) {
 		// TODO 自動生成されたメソッド・スタブ
-		if(mRouteOverlay != null)mRouteOverlay.cancel();
-		if(mStartPos == null){
-			mStartPos = arg3;
-		}else{
-			mGoalPos = arg3;
-			mMapView.removeOverlayAll();
-			mRouteOverlay = new RouteOverlay(this,"dj0zaiZpPTdhZ1hERlB4QU01ViZzPWNvbnN1bWVyc2VjcmV0Jng9Mjg-");
-			mRouteOverlay.setStartTitle("出発地");
-			mRouteOverlay.setGoalTitle("目的地");
-			mRouteOverlay.setRoutePos(mStartPos,mGoalPos,RouteOverlay.TRAFFIC_WALK);
-			mRouteOverlay.setRouteOverlayListener(this);
-			mRouteOverlay.search();
-			mMapView.getOverlays().add(mRouteOverlay);
-		}
+
+		arg2.addPoint(arg3,null);
+
+		System.out.println("ああああああああああああああああああああああああああああああああああああああああああああああああああああああああ");
+		System.out.println("aaaaaaaaa");
+
+		mRouteOverlay.setRoutePos(mStartPos, mGoalPos, RouteOverlay.TRAFFIC_WALK);
+		mRouteOverlay.setRouteOverlayListener(this);
+
+		mRouteOverlay.search();
+		mMapView.getOverlays().add(mRouteOverlay);
 
 		return false;
 	}
@@ -111,6 +108,9 @@ public class RSearch extends MapActivity implements RouteOverlayListener, Locati
 		double lon = 139.701773;
 		GeoPoint gp = new GeoPoint((int)(lat * 1000000),(int)(lon * 1000000));
 
+		mStartPos = gp;
+		System.out.println("ああああああああああああああああああああああああああああああああああああああああああああああああああああああああ");
+		System.out.println(mStartPos);
 		MapController c = mMapView.getMapController();
 
 		c.setCenter(gp);
